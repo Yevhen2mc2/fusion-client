@@ -1,7 +1,4 @@
 {
   "name": "fusion-client",
-  "integrations": {
-    "capacitor": {}
-  },
   "type": "react-vite"
 }
