@@ -13,6 +13,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@capacitor/app": "^8.0.1",
+    "@capacitor/core": "^8.2.0",
+    "@capacitor/haptics": "^8.0.1",
+    "@capacitor/keyboard": "^8.0.1",
+    "@capacitor/status-bar": "^8.0.1",
+    "@ionic/react": "^8.8.1",
+    "ionicons": "^8.0.13",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -20,6 +27,7 @@
     "**/*.{js,jsx,ts,tsx,css,json,md}": "prettier --write"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.2.0",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",

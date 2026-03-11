@@ -5,3 +5,7 @@ coverage
 
 # Dependencies:
 node_modules
+
+android
+ios
+package-lock.json
