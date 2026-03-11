@@ -1,4 +1,7 @@
-import { IonButton, IonDatetime, setupIonicReact } from '@ionic/react';
+import { Route } from 'react-router-dom';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
+import Home from './pages/home.tsx';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -12,10 +15,15 @@ setupIonicReact();
 
 function App() {
   return (
-    <>
-      <IonButton>Button</IonButton>
-      <IonDatetime></IonDatetime>
-    </>
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
   );
 }
 
