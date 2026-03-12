@@ -1,8 +1,8 @@
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/home.tsx';
 import Login from './pages/login.tsx';
+import { AppTabs } from './components/layout/app-tabs.tsx';
 import { AuthGuard } from './components/providers/auth-guard.tsx';
 import { ThemeProvider } from './components/providers/theme-provider.tsx';
 
@@ -32,9 +32,7 @@ function App() {
               <Route exact path="/login">
                 <Login />
               </Route>
-              <Route exact path="/">
-                <Home />
-              </Route>
+              <AppTabs />
             </IonRouterOutlet>
           </AuthGuard>
         </IonReactRouter>
