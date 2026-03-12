@@ -19,7 +19,7 @@ export const useAppStore = create<AppState>()(
       isAuthenticated: false,
       login: (user) => set({ user, isAuthenticated: true }),
       logout: () => set({ user: null, isAuthenticated: false }),
-      theme: 'system' as Theme,
+      theme: 'dark' as Theme,
       cycleTheme: () =>
         set((s) => ({
           theme:
