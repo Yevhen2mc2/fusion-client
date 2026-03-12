@@ -5,7 +5,12 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
-import { contrastOutline, moonOutline, sunnyOutline } from 'ionicons/icons';
+import {
+  contrastOutline,
+  logOutOutline,
+  moonOutline,
+  sunnyOutline,
+} from 'ionicons/icons';
 import { type Theme, useAppStore } from '../../stores/app-store.ts';
 
 const iconMap: Record<Theme, string> = {
@@ -15,7 +20,7 @@ const iconMap: Record<Theme, string> = {
 };
 
 export function AppHeader() {
-  const { theme, cycleTheme } = useAppStore();
+  const { theme, cycleTheme, logout } = useAppStore();
 
   return (
     <IonHeader translucent>
@@ -23,6 +28,9 @@ export function AppHeader() {
         <IonTitle>Fusion</IonTitle>
         <IonButton slot="end" fill="clear" onClick={cycleTheme}>
           <IonIcon icon={iconMap[theme]} />
+        </IonButton>
+        <IonButton slot="end" fill="clear" onClick={logout}>
+          <IonIcon icon={logOutOutline} />
         </IonButton>
       </IonToolbar>
     </IonHeader>
