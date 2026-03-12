@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { Redirect, useLocation } from 'react-router-dom';
-import { useAuth } from './use-auth.ts';
+import { useAppStore as useAuth } from '../../stores/app-store.ts';
 
 const PUBLIC_PATHS = ['/login'];
 

@@ -3,7 +3,6 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/home.tsx';
 import Login from './pages/login.tsx';
-import { AuthProvider } from './components/providers/auth-provider.tsx';
 import { AuthGuard } from './components/providers/auth-guard.tsx';
 import { ThemeProvider } from './components/providers/theme-provider.tsx';
 
@@ -28,18 +27,16 @@ function App() {
     <IonApp>
       <ThemeProvider>
         <IonReactRouter>
-          <AuthProvider>
-            <AuthGuard>
-              <IonRouterOutlet>
-                <Route exact path="/login">
-                  <Login />
-                </Route>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-              </IonRouterOutlet>
-            </AuthGuard>
-          </AuthProvider>
+          <AuthGuard>
+            <IonRouterOutlet>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/">
+                <Home />
+              </Route>
+            </IonRouterOutlet>
+          </AuthGuard>
         </IonReactRouter>
       </ThemeProvider>
     </IonApp>

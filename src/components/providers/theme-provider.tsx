@@ -1,10 +1,8 @@
-import { useState, useEffect, useCallback, type ReactNode } from 'react';
-import { ThemeContext, type Theme } from './theme-context.ts';
+import { useEffect, type ReactNode } from 'react';
+import { useAppStore } from '../../stores/app-store.ts';
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem('theme') as Theme) ?? 'system',
-  );
+  const theme = useAppStore((s) => s.theme);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -30,14 +28,5 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return () => mq.removeEventListener('change', handler);
   }, [theme]);
 
-  const cycleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next: Theme =
-        prev === 'system' ? 'light' : prev === 'light' ? 'dark' : 'system';
-      localStorage.setItem('theme', next);
-      return next;
-    });
-  }, []);
-
-  return <ThemeContext value={{ theme, cycleTheme }}>{children}</ThemeContext>;
+  return <>{children}</>;
 }

@@ -4,7 +4,10 @@
       "Bash(npm run build 2>&1)",
       "Bash(npm run lint 2>&1)",
       "Bash(npm run lint && npm run build)",
-      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run lint && npm run build 2>&1)"
+      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run lint && npm run build 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run build 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run lint 2>&1)",
+      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run build 2>&1 && npm run lint 2>&1)"
     ]
   }
 }

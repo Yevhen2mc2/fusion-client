@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import { useAuth } from '../providers/use-auth.ts';
+import { useAppStore as useAuth } from '../../stores/app-store.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import {

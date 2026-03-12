@@ -6,8 +6,7 @@ import {
   IonToolbar,
 } from '@ionic/react';
 import { contrastOutline, moonOutline, sunnyOutline } from 'ionicons/icons';
-import { useTheme } from '../providers/use-theme.ts';
-import type { Theme } from '../providers/theme-context.ts';
+import { type Theme, useAppStore } from '../../stores/app-store.ts';
 
 const iconMap: Record<Theme, string> = {
   dark: moonOutline,
@@ -16,7 +15,7 @@ const iconMap: Record<Theme, string> = {
 };
 
 export function AppHeader() {
-  const { theme, cycleTheme } = useTheme();
+  const { theme, cycleTheme } = useAppStore();
 
   return (
     <IonHeader translucent>
