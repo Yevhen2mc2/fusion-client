@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm run build 2>&1)",
       "Bash(npm run lint 2>&1)",
-      "Bash(npm run lint && npm run build)"
+      "Bash(npm run lint && npm run build)",
+      "Bash(cd \"C:\\\\Users\\\\minip\\\\OneDrive\\\\Desktop\\\\projects\\\\showcases\\\\fusion-client\" && npm run lint && npm run build 2>&1)"
     ]
   }
 }

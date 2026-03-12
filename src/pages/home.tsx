@@ -5,23 +5,18 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+import { AppHeader } from '../components/layout/app-header.tsx';
 
 const Home = () => {
   return (
     <IonPage>
-      <IonHeader translucent>
-        <IonToolbar>
-          <IonTitle>Fusion</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-
+      <AppHeader />
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Home</IonTitle>
           </IonToolbar>
         </IonHeader>
-
         <div>content</div>
       </IonContent>
     </IonPage>
