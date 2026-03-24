@@ -61,6 +61,7 @@ const Search = () => {
         <IonHeader>
           <IonToolbar>
             <IonSearchbar
+              className={'ion-margin-top'}
               value={query}
               onIonInput={(e) => setQuery(e.detail.value ?? '')}
               placeholder="Search..."
@@ -69,7 +70,7 @@ const Search = () => {
             />
           </IonToolbar>
 
-          <IonToolbar style={{ '--padding-start': '0', '--padding-end': '0' }}>
+          <IonToolbar>
             <div
               style={{
                 display: 'flex',
@@ -94,7 +95,7 @@ const Search = () => {
             </div>
           </IonToolbar>
 
-          <IonToolbar style={{ '--padding-start': '0', '--padding-end': '0' }}>
+          <IonToolbar>
             <div
               style={{
                 display: 'flex',
