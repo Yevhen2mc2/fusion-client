@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   IonBadge,
   IonButton,
@@ -16,43 +15,21 @@ import {
 } from '@ionic/react';
 import { AppHeader } from '../components/layout/app-header.tsx';
 import { NoSearchResults } from '../components/search/no-search-results.tsx';
-import {
-  MOCK_SEARCH_RESULTS,
-  SEARCH_CATEGORIES,
-  SORT_OPTIONS,
-  type SearchCategory,
-  type SortOption,
-} from '../constants/search.ts';
+import { SEARCH_CATEGORIES, SORT_OPTIONS } from '../constants/search.ts';
+import { useSearchFilters } from '../hooks/use-search-filters.ts';
 import { formatCount } from '../utils/format.ts';
 
 const Search = () => {
-  const [query, setQuery] = useState('');
-  const [category, setCategory] = useState<SearchCategory>('all');
-  const [sort, setSort] = useState<SortOption>('popular');
-
-  const handleReset = () => {
-    setQuery('');
-    setCategory('all');
-    setSort('popular');
-  };
-
-  const results = query
-    ? MOCK_SEARCH_RESULTS.filter(
-        (r) => category === 'all' || r.type === category,
-      )
-        .filter((r) => r.title.toLowerCase().includes(query.toLowerCase()))
-        .sort((a, b) => {
-          if (sort === 'popular') return b.count - a.count;
-          if (sort === 'recent') return b.createdAt - a.createdAt;
-          const aExact = a.title.toLowerCase().startsWith(query.toLowerCase())
-            ? 1
-            : 0;
-          const bExact = b.title.toLowerCase().startsWith(query.toLowerCase())
-            ? 1
-            : 0;
-          return bExact - aExact || b.count - a.count;
-        })
-    : [];
+  const {
+    query,
+    setQuery,
+    category,
+    setCategory,
+    sort,
+    setSort,
+    handleReset,
+    results,
+  } = useSearchFilters();
 
   return (
     <IonPage>
@@ -61,7 +38,7 @@ const Search = () => {
         <IonHeader>
           <IonToolbar>
             <IonSearchbar
-              className={'ion-margin-top'}
+              className="ion-margin-top"
               value={query}
               onIonInput={(e) => setQuery(e.detail.value ?? '')}
               placeholder="Search..."
@@ -72,11 +49,12 @@ const Search = () => {
 
           <IonToolbar>
             <div
+              className="ion-padding-horizontal"
               style={{
                 display: 'flex',
                 overflowX: 'auto',
                 gap: '6px',
-                padding: '6px 12px',
+                paddingBlock: '6px',
                 scrollbarWidth: 'none',
               }}
             >
@@ -86,7 +64,8 @@ const Search = () => {
                   onClick={() => setCategory(c.value)}
                   color={category === c.value ? 'primary' : undefined}
                   outline={category !== c.value}
-                  style={{ flexShrink: 0, margin: 0, height: '32px' }}
+                  className="ion-no-margin"
+                  style={{ flexShrink: 0, height: '32px' }}
                 >
                   <IonIcon icon={c.icon} style={{ fontSize: '15px' }} />
                   <IonLabel style={{ fontSize: '13px' }}>{c.label}</IonLabel>
@@ -97,12 +76,8 @@ const Search = () => {
 
           <IonToolbar>
             <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '4px 12px',
-              }}
+              className="ion-padding-horizontal"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
             >
               {SORT_OPTIONS.map((s) => (
                 <IonChip
@@ -110,7 +85,8 @@ const Search = () => {
                   onClick={() => setSort(s.value)}
                   color={sort === s.value ? 'secondary' : undefined}
                   outline={sort !== s.value}
-                  style={{ flexShrink: 0, margin: 0, height: '28px' }}
+                  className="ion-no-margin"
+                  style={{ flexShrink: 0, height: '28px' }}
                 >
                   <IonIcon icon={s.icon} style={{ fontSize: '13px' }} />
                   <IonLabel style={{ fontSize: '12px' }}>{s.label}</IonLabel>
