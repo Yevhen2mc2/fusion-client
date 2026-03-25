@@ -26,7 +26,9 @@ const Login = () => {
             </h1>
           </IonText>
         </div>
-        <LoginForm />
+        <div style={{ maxWidth: 480, margin: '0 auto' }}>
+          <LoginForm />
+        </div>
       </IonContent>
     </IonPage>
   );
