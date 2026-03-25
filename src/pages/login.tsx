@@ -2,6 +2,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonText,
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
@@ -18,6 +19,13 @@ const Login = () => {
             <IonTitle size="large">Sign In</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <div style={{ textAlign: 'center', padding: '32px 0 16px' }}>
+          <IonText color="primary">
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>
+              Fusion
+            </h1>
+          </IonText>
+        </div>
         <LoginForm />
       </IonContent>
     </IonPage>
