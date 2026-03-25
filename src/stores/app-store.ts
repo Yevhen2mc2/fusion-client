@@ -3,11 +3,27 @@ import { persist } from 'zustand/middleware';
 
 export type Theme = 'light' | 'dark' | 'system';
 
+export interface User {
+  firstName: string;
+  lastName: string;
+  bio: string;
+  avatar?: string;
+  stats: {
+    videos: number;
+    followers: number;
+    following: number;
+    likes: number;
+  };
+}
+
 interface AppState {
-  user: object | null;
+  user: User | null;
   isAuthenticated: boolean;
-  login: (user: object) => void;
+  login: (user: User) => void;
   logout: () => void;
+  updateUser: (
+    updates: Partial<Pick<User, 'firstName' | 'lastName' | 'bio'>>,
+  ) => void;
   theme: Theme;
   cycleTheme: () => void;
 }
@@ -19,6 +35,8 @@ export const useAppStore = create<AppState>()(
       isAuthenticated: false,
       login: (user) => set({ user, isAuthenticated: true }),
       logout: () => set({ user: null, isAuthenticated: false }),
+      updateUser: (updates) =>
+        set((s) => (s.user ? { user: { ...s.user, ...updates } } : {})),
       theme: 'dark' as Theme,
       cycleTheme: () =>
         set((s) => ({

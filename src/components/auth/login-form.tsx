@@ -31,8 +31,13 @@ const LoginForm = () => {
     defaultValues: { email: 'demo@fusion.app', password: 'password123' },
   });
 
-  const onSubmit = (data: Form) => {
-    login({ email: data.email });
+  const onSubmit = () => {
+    login({
+      firstName: 'Alex',
+      lastName: 'Morgan',
+      bio: 'Creative filmmaker & content creator',
+      stats: { videos: 142, followers: 48200, following: 890, likes: 1200000 },
+    });
     history.push('/');
   };
 
