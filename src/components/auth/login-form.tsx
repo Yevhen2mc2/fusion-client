@@ -37,6 +37,13 @@ const LoginForm = () => {
       lastName: 'Morgan',
       bio: 'Creative filmmaker & content creator',
       stats: { videos: 142, followers: 48200, following: 890, likes: 1200000 },
+      analytics: {
+        views30d: 2340000,
+        engagementRate: 4.7,
+        newFollowers: 3200,
+        newFollowersGrowth: 12.3,
+        avgWatchTimeSec: 45,
+      },
     });
     history.push('/');
   };

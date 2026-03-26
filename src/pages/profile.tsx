@@ -19,9 +19,16 @@ import {
   IonToolbar,
   useIonToast,
 } from '@ionic/react';
+import { IonIcon } from '@ionic/react';
+import {
+  eyeOutline,
+  trendingUpOutline,
+  peopleOutline,
+  timeOutline,
+} from 'ionicons/icons';
 import { AppHeader } from '../components/layout/app-header.tsx';
 import { useAppStore } from '../stores/app-store.ts';
-import { formatCount } from '../utils/format.ts';
+import { formatCount, formatWatchTime } from '../utils/format.ts';
 
 const editSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -176,6 +183,67 @@ const Profile = () => {
             >
               <p style={{ margin: 0 }}>{user.bio}</p>
             </IonText>
+          )}
+
+          {/* Analytics Overview */}
+          {user.analytics && (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 12,
+                marginTop: 24,
+                width: '100%',
+                maxWidth: 320,
+              }}
+            >
+              {(
+                [
+                  {
+                    icon: eyeOutline,
+                    label: 'Views (30d)',
+                    value: formatCount(user.analytics.views30d),
+                  },
+                  {
+                    icon: trendingUpOutline,
+                    label: 'Engagement',
+                    value: `${user.analytics.engagementRate}%`,
+                  },
+                  {
+                    icon: peopleOutline,
+                    label: 'New Followers',
+                    value: `${formatCount(user.analytics.newFollowers)} (+${user.analytics.newFollowersGrowth}%)`,
+                  },
+                  {
+                    icon: timeOutline,
+                    label: 'Avg Watch Time',
+                    value: formatWatchTime(user.analytics.avgWatchTimeSec),
+                  },
+                ] as const
+              ).map((card) => (
+                <div
+                  key={card.label}
+                  style={{
+                    background: 'var(--ion-color-light)',
+                    borderRadius: 12,
+                    padding: 14,
+                  }}
+                >
+                  <IonIcon
+                    icon={card.icon}
+                    style={{
+                      fontSize: 22,
+                      color: 'var(--ion-color-primary)',
+                      marginBottom: 6,
+                    }}
+                  />
+                  <div style={{ fontWeight: 700, fontSize: 16 }}>
+                    {card.value}
+                  </div>
+                  <div style={{ fontSize: 12, opacity: 0.7 }}>{card.label}</div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
 

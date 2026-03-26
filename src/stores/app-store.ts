@@ -14,6 +14,13 @@ export interface User {
     following: number;
     likes: number;
   };
+  analytics?: {
+    views30d: number;
+    engagementRate: number;
+    newFollowers: number;
+    newFollowersGrowth: number;
+    avgWatchTimeSec: number;
+  };
 }
 
 interface AppState {
