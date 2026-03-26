@@ -73,7 +73,9 @@ export const ProfileForm = ({ user, onSubmit, onCancel }: ProfileFormProps) => {
             </IonItem>
             {errors.firstName && (
               <IonText color="danger">
-                <p style={{ margin: '4px 16px' }}>{errors.firstName.message}</p>
+                <p className="ion-margin-horizontal">
+                  {errors.firstName.message}
+                </p>
               </IonText>
             )}
 
@@ -93,7 +95,9 @@ export const ProfileForm = ({ user, onSubmit, onCancel }: ProfileFormProps) => {
             </IonItem>
             {errors.lastName && (
               <IonText color="danger">
-                <p style={{ margin: '4px 16px' }}>{errors.lastName.message}</p>
+                <p className="ion-margin-horizontal">
+                  {errors.lastName.message}
+                </p>
               </IonText>
             )}
 
@@ -115,12 +119,12 @@ export const ProfileForm = ({ user, onSubmit, onCancel }: ProfileFormProps) => {
             </IonItem>
             {errors.bio && (
               <IonText color="danger">
-                <p style={{ margin: '4px 16px' }}>{errors.bio.message}</p>
+                <p className="ion-margin-horizontal">{errors.bio.message}</p>
               </IonText>
             )}
           </IonList>
 
-          <div style={{ padding: '16px' }}>
+          <div className="ion-padding">
             <IonButton expand="block" type="submit">
               Save
             </IonButton>

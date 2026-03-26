@@ -66,11 +66,11 @@ const Profile = () => {
         </IonHeader>
 
         <div
+          className="ion-padding"
           style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: '24px 16px',
           }}
         >
           {/* Avatar */}
@@ -85,7 +85,7 @@ const Profile = () => {
           </IonAvatar>
 
           {/* Name */}
-          <IonText style={{ marginTop: 12 }}>
+          <IonText className="ion-margin-top">
             <h2 style={{ margin: 0, fontWeight: 600 }}>
               @{user.firstName.toLowerCase()}
               {user.lastName.toLowerCase()}
@@ -93,7 +93,7 @@ const Profile = () => {
           </IonText>
 
           {/* Stats row */}
-          <div style={{ display: 'flex', gap: 24, marginTop: 16 }}>
+          <div className="ion-margin-top" style={{ display: 'flex', gap: 24 }}>
             {(
               [
                 ['videos', user.stats.videos],
@@ -102,16 +102,13 @@ const Profile = () => {
                 ['likes', user.stats.likes],
               ] as const
             ).map(([label, value]) => (
-              <div key={label} style={{ textAlign: 'center' }}>
+              <div key={label} className="ion-text-center">
                 <div style={{ fontWeight: 700, fontSize: 18 }}>
                   {formatCount(value)}
                 </div>
                 <div
-                  style={{
-                    fontSize: 12,
-                    opacity: 0.7,
-                    textTransform: 'capitalize',
-                  }}
+                  className="ion-text-capitalize"
+                  style={{ fontSize: 12, opacity: 0.7 }}
                 >
                   {label}
                 </div>
@@ -121,10 +118,10 @@ const Profile = () => {
 
           {/* Action buttons */}
           <div
+            className="ion-margin-top"
             style={{
               display: 'flex',
               gap: 8,
-              marginTop: 16,
               width: '100%',
               maxWidth: 320,
             }}
@@ -149,7 +146,8 @@ const Profile = () => {
           {/* Bio */}
           {user.bio && (
             <IonText
-              style={{ marginTop: 16, textAlign: 'center', maxWidth: 320 }}
+              className="ion-margin-top ion-text-center"
+              style={{ maxWidth: 320 }}
             >
               <p style={{ margin: 0 }}>{user.bio}</p>
             </IonText>
@@ -158,11 +156,11 @@ const Profile = () => {
           {/* Analytics Overview */}
           {user.analytics && (
             <div
+              className="ion-margin-top"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '1fr 1fr',
                 gap: 12,
-                marginTop: 24,
                 width: '100%',
                 maxWidth: 320,
               }}
@@ -193,18 +191,18 @@ const Profile = () => {
               ).map((card) => (
                 <div
                   key={card.label}
+                  className="ion-padding"
                   style={{
                     background: 'var(--ion-color-light)',
                     borderRadius: 12,
-                    padding: 14,
                   }}
                 >
                   <IonIcon
                     icon={card.icon}
+                    className="ion-margin-bottom"
                     style={{
                       fontSize: 22,
                       color: 'var(--ion-color-primary)',
-                      marginBottom: 6,
                     }}
                   />
                   <div style={{ fontWeight: 700, fontSize: 16 }}>
