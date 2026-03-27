@@ -5,6 +5,7 @@ import {
   IonTitle,
   IonToolbar,
 } from '@ionic/react';
+import { Link } from 'react-router-dom';
 import {
   contrastOutline,
   logOutOutline,
@@ -25,7 +26,11 @@ export function AppHeader() {
   return (
     <IonHeader translucent>
       <IonToolbar>
-        <IonTitle>Fusion</IonTitle>
+        <IonTitle>
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+            Fusion
+          </Link>
+        </IonTitle>
         <IonButton slot="end" fill="clear" onClick={cycleTheme}>
           <IonIcon icon={iconMap[theme]} />
         </IonButton>
