@@ -3,14 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useAppStore as useAuth } from '../../stores/app-store.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import {
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonButton,
-  IonText,
-  IonList,
-} from '@ionic/react';
+import { IonInput, IonButton, IonCard, IonCardContent } from '@ionic/react';
 
 const schema = z.object({
   email: z.email('Invalid email'),
@@ -50,51 +43,47 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={(e) => void handleSubmit(onSubmit)(e)}>
-      <IonList>
-        <IonItem>
-          <IonLabel position="stacked">Email</IonLabel>
+      <IonCard>
+        <IonCardContent className="ion-padding">
           <Controller
             name="email"
             control={control}
             render={({ field }) => (
               <IonInput
+                fill="outline"
+                label="Email"
+                labelPlacement="floating"
                 type="email"
                 value={field.value}
                 onIonInput={(e) => field.onChange(e.detail.value)}
                 onIonBlur={field.onBlur}
+                errorText={errors.email?.message}
+                className={errors.email ? 'ion-invalid ion-touched' : ''}
               />
             )}
           />
-        </IonItem>
-        {errors.email && (
-          <IonText color="danger">
-            <p style={{ margin: '4px 16px' }}>{errors.email.message}</p>
-          </IonText>
-        )}
 
-        <IonItem>
-          <IonLabel position="stacked">Password</IonLabel>
           <Controller
             name="password"
             control={control}
             render={({ field }) => (
               <IonInput
+                fill="outline"
+                label="Password"
+                labelPlacement="floating"
                 type="password"
                 value={field.value}
                 onIonInput={(e) => field.onChange(e.detail.value)}
                 onIonBlur={field.onBlur}
+                errorText={errors.password?.message}
+                className={`ion-margin-top${errors.password ? ' ion-invalid ion-touched' : ''}`}
               />
             )}
           />
-        </IonItem>
-        {errors.password && (
-          <IonText color="danger">
-            <p style={{ margin: '4px 16px' }}>{errors.password.message}</p>
-          </IonText>
-        )}
-      </IonList>
+        </IonCardContent>
+      </IonCard>
 
-      <div style={{ padding: '16px' }}>
+      <div className="ion-padding">
         <IonButton expand="block" type="submit">
           Sign In
         </IonButton>
