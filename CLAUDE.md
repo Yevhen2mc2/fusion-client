@@ -21,6 +21,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Use Ionic utility classes instead of custom inline styles wherever possible: `ion-padding`, `ion-padding-horizontal`, `ion-padding-vertical`, `ion-margin`, `ion-margin-top`, `ion-text-center`, `ion-text-capitalize`, etc.
 
+## Utils
+
+- `src/utils/format.ts` — `formatCount`, `formatViewers`, `formatWatchTime`
+
 ## Commands
 
 ```bash

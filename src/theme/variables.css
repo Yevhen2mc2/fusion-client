@@ -16,6 +16,16 @@
   --ion-item-background: #ffffff;
 }
 
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
 /* Dark mode — applied when ThemeProvider adds .ion-palette-dark to <html> */
 .ion-palette-dark {
   --ion-color-primary: #4c8dff;
