@@ -61,9 +61,7 @@ const TRENDING_VIDEOS = [
 ];
 
 const Feed = () => {
-  const [segment, setSegment] = useState<'feed' | 'hashtags' | 'videos'>(
-    'feed',
-  );
+  const [segment, setSegment] = useState<'feed' | 'tags' | 'videos'>('feed');
 
   return (
     <IonPage>
@@ -78,27 +76,27 @@ const Feed = () => {
           <IonSegment
             value={segment}
             onIonChange={(e) =>
-              setSegment(e.detail.value as 'feed' | 'hashtags' | 'videos')
+              setSegment(e.detail.value as 'feed' | 'tags' | 'videos')
             }
           >
-            <IonSegmentButton value="feed">
+            <IonSegmentButton value="feed" layout="icon-start">
               <IonIcon icon={playOutline} />
               <IonLabel>Feed</IonLabel>
             </IonSegmentButton>
-            <IonSegmentButton value="hashtags">
+            <IonSegmentButton value="tags" layout="icon-start">
               <IonIcon icon={pricetagOutline} />
-              <IonLabel>Trending Hashtags</IonLabel>
+              <IonLabel>Tags</IonLabel>
             </IonSegmentButton>
-            <IonSegmentButton value="videos">
+            <IonSegmentButton value="videos" layout="icon-start">
               <IonIcon icon={videocamOutline} />
-              <IonLabel>Trending Videos</IonLabel>
+              <IonLabel>Videos</IonLabel>
             </IonSegmentButton>
           </IonSegment>
         </IonToolbar>
 
         {segment === 'feed' && <div />}
 
-        {segment === 'hashtags' && (
+        {segment === 'tags' && (
           <IonList>
             {TRENDING_HASHTAGS.map(({ tag, postCount, growPercent }) => (
               <IonItem key={tag}>
