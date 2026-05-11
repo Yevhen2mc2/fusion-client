@@ -19,7 +19,7 @@ Husky + lint-staged runs only `prettier --write` on staged files. ESLint is **no
 
 ## Stack
 
-React 19 + TypeScript + Vite 7 + Ionic Framework v8 + PWA (vite-plugin-pwa, `autoUpdate`). Zustand with `persist` middleware. React Hook Form + zod.
+React 19 + TypeScript + Vite 7 + Ionic Framework v8 + PWA (vite-plugin-pwa, `autoUpdate`). Zustand with `persist` middleware. React Hook Form + zod. `@tanstack/react-query` (v5) + `axios` for server state.
 
 ## Routing — React Router v5 (not v6)
 
@@ -72,9 +72,20 @@ Dark/light/system via `useAppStore((s) => s.theme)` and `cycleTheme()`. The `The
 
 - `src/stores/app-store.ts` — global state (auth, user, theme), persisted to localStorage under key `"app"`
 - `src/types/projects.ts` — `Project`, `ProjectFilter`, `ProjectStatus`
+- `src/types/pixabay.ts` — `PixabayVideo`, `FetchVideosParams`, `FetchVideosResponse`
 - `src/utils/format.ts` — `formatCount`, `formatViewers`, `formatWatchTime`
+- `src/services/axios.ts` — `apiClient` axios instance with 401 interceptor placeholder
+- `src/services/query-client.ts` — `QueryClient` with defaults (staleTime: 5m, retry: 2)
+- `src/services/pixabay.ts` — `fetchVideos()` calls Pixabay API
+- `src/hooks/use-pixabay-videos.ts` — `useQuery` wrapper for pixabay videos
+- `src/hooks/use-search-filters.ts` — search state (query, category, sort) wired to pixabay
 - `src/components/providers/auth-guard.tsx` — redirects unauthenticated users to `/login`
 - `src/components/providers/theme-provider.tsx` — applies theme class to `<html>`
+- `src/components/providers/query-provider.tsx` — `<QueryClientProvider>` wrapper
+
+## Env
+
+`.env` — `VITE_PIXABAY_API_KEY` (required for search page). Vite requires `VITE_` prefix for client-side env vars. Types declared in `src/vite-env.d.ts`.
 
 ## PWA / platform
 
