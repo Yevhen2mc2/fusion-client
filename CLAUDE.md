@@ -43,6 +43,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 `.env` — `VITE_PIXABAY_API_KEY` (required for search). Types in `src/vite-env.d.ts`.
 
+## Components
+
+- `src/components/video/video-player.tsx` → `VideoPlayer` — fetches Pixabay videos via `usePixabayVideos`, renders `<video>` element
+
 ## Utils
 
 - `src/utils/format.ts` — `formatCount`, `formatViewers`, `formatWatchTime`

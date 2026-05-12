@@ -79,6 +79,7 @@ Dark/light/system via `useAppStore((s) => s.theme)` and `cycleTheme()`. The `The
 - `src/services/pixabay.ts` — `fetchVideos()` calls Pixabay API
 - `src/hooks/use-pixabay-videos.ts` — `useQuery` wrapper for pixabay videos
 - `src/hooks/use-search-filters.ts` — search state (query, category, sort) wired to pixabay
+- `src/components/video/video-player.tsx` — `VideoPlayer` fetches Pixabay videos, renders `<video>` element
 - `src/components/providers/auth-guard.tsx` — redirects unauthenticated users to `/login`
 - `src/components/providers/theme-provider.tsx` — applies theme class to `<html>`
 - `src/components/providers/query-provider.tsx` — `<QueryClientProvider>` wrapper

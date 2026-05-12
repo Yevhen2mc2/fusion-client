@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   IonBadge,
   IonContent,
-  IonHeader,
   IonIcon,
   IonItem,
   IonLabel,
@@ -11,7 +10,6 @@ import {
   IonSegment,
   IonSegmentButton,
   IonThumbnail,
-  IonTitle,
   IonToolbar,
 } from '@ionic/react';
 import {
@@ -22,6 +20,7 @@ import {
   videocamOutline,
 } from 'ionicons/icons';
 import { AppHeader } from '../components/layout/app-header.tsx';
+import { VideoPlayer } from '../components/video/video-player.tsx';
 import { formatCount } from '../utils/format.ts';
 
 const TRENDING_HASHTAGS = [
@@ -67,11 +66,6 @@ const Feed = () => {
     <IonPage>
       <AppHeader />
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Feed</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonToolbar>
           <IonSegment
             value={segment}
@@ -94,7 +88,7 @@ const Feed = () => {
           </IonSegment>
         </IonToolbar>
 
-        {segment === 'feed' && <div />}
+        {segment === 'feed' && <VideoPlayer />}
 
         {segment === 'tags' && (
           <IonList>
